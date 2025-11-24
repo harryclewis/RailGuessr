@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "RailGuessr"
+version = "2.2"
+dependencies = [
+    "discord.py",
+]
+authors = [
+  {name = "Harry C Lewis"},
+]
+readme = "README.md"

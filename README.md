@@ -1,1 +1,1 @@
-First commit.
+Welcome to RailGuessr, a Discord bot inspired by GeoGuessr.
