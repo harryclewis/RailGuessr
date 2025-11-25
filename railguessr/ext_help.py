@@ -25,6 +25,12 @@ command_group_help = CommandGroup(
     "Commands to help you use the bot.",
     Command('commands', 'List available commands in given category.', '`.commands [category]`')
 )
+command_group_fun = CommandGroup(
+    "Fun",
+    "A variety of silly commands.",
+    Command('ping', 'Pong!', '`.ping`'),
+    Command('fax', 'Send a user a random fax message.', '`.fax <user>`')
+)
 
 
 """ This cog contains the 'help' extension """
@@ -37,7 +43,7 @@ class HelpCog(commands.Cog):
     async def commands(self, ctx, category: str = ""):
 
         # Define the command groups.
-        command_groups = [command_group_help]
+        command_groups = [command_group_help, command_group_fun]
 
         # If argument not supplied, list arguments.
         if category == "":
@@ -79,7 +85,7 @@ class HelpCog(commands.Cog):
         # Throw an error message indicating the user to provide a command category
         else:
             embed = discord.Embed(
-                title='Error: Invalid argument',
+                title='Error: Invalid Argument',
                 description='You have provided an invalid command category. See list below:',
                 colour=discord.Colour.red()
             )

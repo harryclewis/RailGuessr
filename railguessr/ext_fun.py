@@ -49,6 +49,14 @@ class FunCog(commands.Cog):
                 colour=discord.Colour.red()
             )
             await ctx.send(embed=embed)
+        
+        elif isinstance(error, commands.BadArgument):
+            embed = discord.Embed(
+                title='Error: Invalid Argument',
+                description=f'You have not provided a valid user.',
+                colour=discord.Colour.red()
+            )
+            await ctx.send(embed=embed)
 
 # Setup the cog
 async def setup(bot):
