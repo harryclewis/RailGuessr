@@ -31,7 +31,7 @@ async def load_cogs():
     # Loop over cogs and load them
     for cog in cogs:
         try:
-            await bot.load_extension("railguessr.ext_fun")
+            await bot.load_extension(cog)
         except Exception as e:
             print(f'Failed to load {cog} cog: {e}')
 
@@ -43,12 +43,24 @@ async def on_ready():
     print(f'Initialised RailGuessr!')
 
 
-# """ Process commands from messages """
-# @bot.event
-# async def on_message(message):
-#     if (len(message.content) > 0) and (not message.content == len(message.content) * message.content[0]):
-#         await bot.process_commands(message)
+""" Process commands from messages """
+@bot.event
+async def on_message(message):
+    if (len(message.content) > 0) and (not message.content == len(message.content) * message.content[0]):
+        await bot.process_commands(message)
 
+
+""" Handle unknown commands """
+@bot.event
+async def on_command_error(ctx, error):
+
+    if isinstance(error, commands.CommandNotFound):
+        embed = discord.Embed(
+            title='Error: Command Not Found',
+            description='Use `.commands` for a list of commands.',
+            colour=discord.Colour.red()
+        )
+        await ctx.channel.send(embed=embed)
 
 # Run the bot
 bot.run(TOKEN)

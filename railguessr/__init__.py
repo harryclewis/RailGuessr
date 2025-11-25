@@ -1,1 +1,1 @@
-__all__ = ["ext_fun.py"]
+__all__ = ["ext_fun.py", "ext_help.py"]
